@@ -1,0 +1,12 @@
+name          'barnaclebob-smforum'
+version       '0.1.0'
+source        'https://github.com/BarnacleBob/barnaclebob-smforum'
+author        'barnaclebob'
+license       'Apache 2.0'
+summary       'Puppet module to install and manage simple machines forum'
+description   ''
+project_page  'https://github.com/BarnacleBob/barnaclebob-smforum'
+
+dependency 'puppetlabs/stdlib'
+dependency 'camptocamp/archive'
+dependency 'puppetlabs/mysql'
