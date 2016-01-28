@@ -5,6 +5,12 @@
 class smforum::vhost::nginx {
   include '::nginx'
 
+  if $::smforum::include_php {
+    include '::php'
+    include '::php::fpm'
+    include '::php::extension::apc'
+  }
+
   $http_redirect = $::smforum::vhost_ssl_only ? {
     true    => { 'rewrite' => '^ https://$servername$request_uri? permanent' }
     default => undef,
@@ -32,20 +38,19 @@ class smforum::vhost::nginx {
   }
 
   nginx::resource::location { "${::smforum::vhost_fqd}_root":
-      ensure          => present,
-      ssl             => true,
-      ssl_only        => $::smforum_vhost_ssl_only,
-      vhost           => $::smforum::vhost_fqdn,
-      www_root        => $::smforum::documentroot,
-      location        => '~ \.php$',
-      index_files     => ['index.php', 'index.html', 'index.htm'],
-      fastcgi         => "",
-      fastcgi_script  => undef,
-      location_cfg_append => {
-        fastcgi_connect_timeout => '3m',
-        fastcgi_read_timeout    => '3m',
-        fastcgi_send_timeout    => '3m'
-      }
+    ensure          => present,
+    ssl             => true,
+    ssl_only        => $::smforum_vhost_ssl_only,
+    vhost           => $::smforum::vhost_fqdn,
+    www_root        => $::smforum::documentroot,
+    location        => '~ \.php$',
+    index_files     => ['index.php', 'index.html', 'index.htm'],
+    fastcgi         => $::smforum_vhost_nginx_fcgi,
+    fastcgi_script  => undef,
+    location_cfg_append => {
+      fastcgi_connect_timeout => '3m',
+      fastcgi_read_timeout    => '3m',
+      fastcgi_send_timeout    => '3m'
     }
   }
 }

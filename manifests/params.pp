@@ -13,6 +13,9 @@ class smforum::params {
   $mysql_user = 'smforum'
   $mysql_db   = 'smforum'
 
+  $include_php    = true
+  $php_fcgi = 'unix:/var/run/php5-fpm.sock'
+
   $manage_vhost   = true
   $vhost_type     = 'nginx'
   $vhost_ssl      = true

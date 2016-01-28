@@ -19,6 +19,9 @@ class smforum (
   $mysql_user   = $::smforum::params::mysql_user,
   $mysql_db     = $::smforum::params::mysql_db,
 
+  $include_php   = $::smforum::params::include_php,
+  $php_fcgi      = $::smforum::params::php_fcgi,
+
   $manage_vhost               = $::smforum::params::manage_vhost,
   $vhost_type                 = $::smforum::params::vhost_type,
   $vhost_fqdn                 = $::smforum::params::vhost_fqdn,
@@ -26,9 +29,6 @@ class smforum (
   $vhost_ssl_only             = $::smforum::params::vhost_ssl_only,
   $vhost_ssl_cert     = undef,
   $vhost_ssl_key      = undef,
-  $   = $::smforum::params::
-  $   = $::smforum::params::
-  $   = $::smforum::params::
 ) inherits ::smforum::params {
 
   case $vhost_type {
