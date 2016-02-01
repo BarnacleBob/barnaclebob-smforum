@@ -46,20 +46,20 @@ class smforum::vhost::nginx(
     }
   }
 
-  nginx::resource::location { "${vhost_fqdn}_root":
-    ensure              => present,
-    ssl                 => true,
-    ssl_only            => $ssl_only,
-    vhost               => "${vhost_fqdn} ssl",
-    www_root            => $document_root,
-    location            => '~ \.php$',
-    index_files         => ['index.php', 'index.html', 'index.htm'],
-    fastcgi             => $php_fcgi,
-    fastcgi_script      => undef,
-    location_cfg_append => {
-      fastcgi_connect_timeout => '3m',
-      fastcgi_read_timeout    => '3m',
-      fastcgi_send_timeout    => '3m',
-    },
-  }
+#  nginx::resource::location { "${vhost_fqdn}_root":
+#    ensure              => present,
+#    ssl                 => true,
+#    ssl_only            => $ssl_only,
+#    vhost               => "${vhost_fqdn} ssl",
+#    www_root            => $document_root,
+#    location            => '~ \.php$',
+#    index_files         => ['index.php', 'index.html', 'index.htm'],
+#    fastcgi             => $php_fcgi,
+#    fastcgi_script      => undef,
+#    location_cfg_append => {
+#      fastcgi_connect_timeout => '3m',
+#      fastcgi_read_timeout    => '3m',
+#      fastcgi_send_timeout    => '3m',
+#    },
+#  }
 }
