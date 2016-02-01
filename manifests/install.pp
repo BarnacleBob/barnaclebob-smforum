@@ -14,5 +14,6 @@ class smforum::install(
     url    => "http://download.simplemachines.org/index.php/${archive_str}.tar.gz",
     target => $document_root,
     user   => $user,
+    checksum => false,
   }
 }
