@@ -28,22 +28,23 @@ class smforum::vhost::nginx(
     default => undef,
   }
 
-  nginx::resource::vhost { "${vhost_fqdn} http":
-    ensure              => present,
-    www_root            => $document_root,
-    location_cfg_append => $http_redirect,
-  }
+#  nginx::resource::vhost { "${vhost_fqdn} http":
+#    ensure              => present,
+#    www_root            => $document_root,
+#    location_cfg_append => $http_redirect,
+#  }
 
   if $ssl {
     nginx::resource::vhost { "${vhost_fqdn} ssl":
       ensure      => present,
-      listen_port => 443,
+#      listen_port => 443,
       www_root    => $document_root,
       index_files => [ 'index.php' ],
       ssl         => true,
       ssl_cert    => $ssl_cert,
       ssl_key     => $ssl_key,
       use_default_location => false,
+      rewrite_to_https => true,
     }
   }
 
