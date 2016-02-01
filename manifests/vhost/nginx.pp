@@ -21,7 +21,7 @@ class smforum::vhost::nginx(
     include '::php::extension::apc'
   }
 
-  $redirect_rule = { 'rewrite' => '^ https://$servername$request_uri? permanent' }
+  $redirect_rule = { 'rewrite' => '^ https://$server_name$request_uri? permanent' }
 
   $http_redirect = $ssl_only ? {
     true    => $redirect_rule,
