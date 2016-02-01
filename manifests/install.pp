@@ -10,10 +10,19 @@ class smforum::install(
   $archive_version_str = regsubst($version, '\.', '-', 'G')
   $archive_str = "smf_${archive_version_str}_install"
 
+  file { '/usr/src/smforum':
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => $user,
+    group  => $user,
+  }
+
   archive { $archive_str:
-    url    => "http://download.simplemachines.org/index.php/${archive_str}.tar.gz",
-    target => $document_root,
-    user   => $user,
-    checksum => false,
+    url        => "http://download.simplemachines.org/index.php/${archive_str}.tar.gz",
+    target     => $document_root,
+    user       => $user,
+    checksum   => false,
+    require    => File['/usr/src/smforum'],
+    src_target => '/usr/src/smforum',
   }
 }
