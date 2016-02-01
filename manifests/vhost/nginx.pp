@@ -51,7 +51,7 @@ class smforum::vhost::nginx(
     ensure              => present,
     ssl                 => true,
     ssl_only            => $ssl_only,
-    vhost               => $vhost_fqdn,
+    vhost               => "${vhost_fqdn} ssl",
     www_root            => $document_root,
     location            => '~ \.php$',
     index_files         => ['index.php', 'index.html', 'index.htm'],
