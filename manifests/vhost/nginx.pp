@@ -19,6 +19,7 @@ class smforum::vhost::nginx(
     include '::php'
     include '::php::fpm'
     include '::php::extension::apc'
+    include '::php::extension::mysql'
   }
 
   nginx::resource::vhost { $vhost_fqdn:
