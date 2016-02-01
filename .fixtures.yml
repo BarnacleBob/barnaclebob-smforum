@@ -3,3 +3,10 @@ fixtures:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
   symlinks:
     smforum: "#{source_dir}"
+  forge_modules:
+    mysql: "puppetlabs/mysql"
+    nginx: "jfryman/nginx"
+    archive: "camptocamp/archive"
+    apt: "puppetlabs/apt"
+    php: "nodes/php"
+    concat: "puppetlabs/concat"

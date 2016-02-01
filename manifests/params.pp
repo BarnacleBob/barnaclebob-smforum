@@ -9,17 +9,19 @@ class smforum::params {
   $owner = 'root'
   $group = 'root'
 
-  $manage_mysql = true
-  $mysql_user = 'smforum'
-  $mysql_db   = 'smforum'
+  $manage_mysql   = true
+  $mysql_user     = 'smforum'
+  $mysql_db       = 'smforum'
+  $mysql_password = 'smforumpassword'
 
   $include_php    = true
   $php_fcgi = 'unix:/var/run/php5-fpm.sock'
 
   $manage_vhost   = true
+  $vhost_fqdn     = $::fqdn
   $vhost_type     = 'nginx'
-  $vhost_ssl      = true
-  $vhost_ssl_only = true
+  $vhost_ssl      = false
+  $vhost_ssl_only = false
 
   $www_user = 'nobody'
   $www_group = 'nobody'

@@ -1,11 +1,15 @@
 require 'spec_helper_acceptance'
 
 describe 'smforum class' do
-  context 'default parameters' do
+  context 'simple parameters' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
       pp = <<-EOS
-      class { 'smforum': }
+      class { 'smforum': 
+        include_php  => false,
+        manage_mysql => false,
+        manage_vhost => false,
+      }
       EOS
 
       # Run it twice and test for idempotency
@@ -13,13 +17,12 @@ describe 'smforum class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
-    describe package('smforum') do
-      it { is_expected.to be_installed }
+    describe file("#{$document_root}") do
+      it { is_expected.to be_directory }
     end
 
-    describe service('smforum') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
+    describe file("#{$document_root}/install.php") do
+      it { is_expected.to be_file }
     end
   end
 end
