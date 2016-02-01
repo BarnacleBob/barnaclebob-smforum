@@ -43,6 +43,7 @@ class smforum::vhost::nginx(
       ssl         => true,
       ssl_cert    => $ssl_cert,
       ssl_key     => $ssl_key,
+      use_default_location => false,
     }
   }
 
