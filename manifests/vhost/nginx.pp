@@ -29,6 +29,7 @@ class smforum::vhost::nginx(
   }
 
   nginx::resource::vhost { "${vhost_fqdn} http":
+    server_name         => ${vhost_fqdn},
     ensure              => present,
     www_root            => $document_root,
     index_files         => [ 'index.php' ],
@@ -37,6 +38,7 @@ class smforum::vhost::nginx(
 
   if $ssl {
     nginx::resource::vhost { "${vhost_fqdn} ssl":
+      server_name => ${vhost_fqdn},
       ensure      => present,
       listen_port => 443,
       www_root    => $document_root,
