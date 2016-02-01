@@ -43,6 +43,7 @@ class smforum::vhost::nginx(
       listen_port => 443,
       www_root    => $document_root,
       index_files => [ 'index.php' ],
+      ssl_only    => true,
       ssl         => true,
       ssl_cert    => $ssl_cert,
       ssl_key     => $ssl_key,
