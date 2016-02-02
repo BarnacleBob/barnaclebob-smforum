@@ -26,3 +26,16 @@ class smforum::install(
     src_target => '/usr/src/smforum',
   }
 }
+
+
+#set file perms for rest should be root
+#attachments
+#avatars
+#cache
+#Packages
+#Packages/installed.list
+#Smileys
+#Themes
+#agreement.txt
+#Settings.php
+#Settings_bak.php

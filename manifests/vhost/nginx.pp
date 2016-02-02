@@ -20,6 +20,7 @@ class smforum::vhost::nginx(
     include '::php::fpm'
     include '::php::extension::apc'
     include '::php::extension::mysql'
+    include '::php::extension::gd'
   }
 
   nginx::resource::vhost { $vhost_fqdn:
