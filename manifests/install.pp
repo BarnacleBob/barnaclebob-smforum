@@ -17,14 +17,14 @@ class smforum::install(
     group  => $user,
   }
 
-  archive { $archive_str:
-    url        => "http://download.simplemachines.org/index.php/${archive_str}.tar.gz",
-    target     => $document_root,
-    user       => $user,
-    checksum   => false,
-    require    => File['/usr/src/smforum'],
-    src_target => '/usr/src/smforum',
-  }
+#  archive { $archive_str:
+#    url        => "http://download.simplemachines.org/index.php/${archive_str}.tar.gz",
+#    target     => $document_root,
+#    user       => $user,
+#    checksum   => false,
+#    require    => File['/usr/src/smforum'],
+#    src_target => '/usr/src/smforum',
+#  }
 }
 
 
